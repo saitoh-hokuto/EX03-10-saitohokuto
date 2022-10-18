@@ -1,16 +1,26 @@
 ﻿#include <iostream>
-#include "getVolumeSurface.h"
 using namespace std;
+
+void VolumeSurface(double, double, double, double&, double&);
+
 int main() {
-	double x, y, z;
-	cout << "幅を入力:";
-	cin >> x;
-	cout << "高さを入力:";
-	cin >> y;
-	cout << "奥行を入力:";
-	cin >> z;
-	double volume, suraface;
-	volume = getVolumeSurface(x, y, z, suraface);
-	cout << "体積は" << volume << endl << "表面積は" << suraface << endl;
+	double width, height, depth,volume,surface;
+	cout << "幅を入力:"<<endl;
+	cin >> width;
+	cout << "高さを入力:" << endl;
+	cin >> height;
+	cout << "奥行を入力:" << endl;
+	cin >> depth;
+	VolumeSurface(width, height, depth,volume,surface);
+	cout << "体積は" << volume << endl << "表面積は" << surface << endl;
+
+	int e;
+	cin >> e;
+
 	return 0;
+}
+
+void VolumeSurface(double width, double height, double depth, double &volume, double &surface){
+	volume = width * height * depth;
+	surface = (width * height + width * depth + height * depth) * 2;
 }
