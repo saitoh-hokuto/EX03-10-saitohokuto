@@ -1,51 +1,77 @@
 ﻿#include <iostream>
 #include<iomanip>
-#include <stdlib.h>
-#include"getBmi.h"
-#include"getObesity.h"
 using namespace std;
 
-string obesityMessage[] =
+double getBmi(double height, double weight)
 {
-    "低体重",        //[0] -1
-    "普通体重",     //[1] 0
-    "肥満(1度)",   //[2] 1
-    "肥満(2度)",   //[3] 2
-    "肥満(3度)",   //[4] 3
-    "肥満(4度)",   //[5] 4
-};
+    double bmi;
+    height /= 100;
+    bmi = weight / height / height;
+    return bmi;
+}
 
-void testGetObesity() {
-    double testBmi[] = { 18.4,18.5,18.6,24,25,26,29,30,31,34,35,36,39,40,41 };
-    for (int i = 0; i < _countof(testBmi); i++) {
-        cout << "BMI=" << testBmi[i] << ",肥満度=" << obesityMessage[getObesity(testBmi[i])+1] << endl;
+int getObesity(double bmi) {
+    int obesity;
+    if (bmi < 18.5) {
+        obesity = -1;
     }
+    else if (bmi < 25) {
+        obesity = 0;
+    }
+    else if (bmi < 30) {
+        obesity = 1;
+    }
+    else if (bmi < 35) {
+        obesity = 2;
+    }
+    else if (bmi < 40) {
+        obesity = 3;
+    }
+    else {
+        obesity = 4;
+    }
+    return obesity;
 }
 
 int main()
 {
-    const int STD_BMI = 22; // 標準BMI
-    double height;  // 身長
-    double weight;  // 体重
-    double bmi = 0;    // bmi
-    double stdWeight;   // 標準体重
+    const int STD_BMI = 22;
+    double height;
+    double weight;
+    double bmi = 0;
+    double stdWeight;
+    double obesity=0;
 
-    //キー入力をheightに格納する
     cout << "身長(cm)を入力してください";
     cin >> height;
 
-    //キー入力をweightに格納する
     cout << "体重(kg)を入力してください";
     cin >> weight;
 
-    // 標準体重を計算する
-    stdWeight = STD_BMI * (height / 100) * (height / 100);
-    bmi = getBmi(height, weight);
-    int obesity = getObesity(bmi);
-    // bmiを画面に表示する
-    cout << "あなたのBMIは、" << fixed << setprecision(1) << bmi << "です。" << endl;
-    cout << "あなたの肥満度は、" << obesityMessage[ obesity+1] << "です。" << endl;
-    // 標準体重を画面に表示する
+    stdWeight = STD_BMI * (height/100) * (height/100);
+
+    cout << "あなたのBMIは、" << fixed << setprecision(1) << getBmi(weight, height/100) << "です。" << endl;
+    bmi = getObesity(getBmi(height, weight));
+
+    if (obesity == -1) {
+        cout << "低体重です" << endl;
+    }
+    else if (obesity == 0) {
+        cout << "通常体重です" << endl;
+    }
+    else if (obesity == 1) {
+        cout << "肥満(１度)です" << endl;
+    }
+    else if (obesity == 2) {
+        cout << "肥満(２度)です" << endl;
+    }
+    else if (obesity == 3) {
+        cout << "肥満(３度)です" << endl;
+    }
+    else {
+        cout << "肥満(４度)です" << endl;
+    }
+
     cout << "あなたの標準体重は、" << stdWeight << "です" << endl;
     return 0;
 }
