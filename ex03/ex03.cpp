@@ -73,5 +73,9 @@ int main()
     }
 
     cout << "あなたの標準体重は、" << stdWeight << "です" << endl;
+
+    int e;
+    cin >> e;
+
     return 0;
 }
