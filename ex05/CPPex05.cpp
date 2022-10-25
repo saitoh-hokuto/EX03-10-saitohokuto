@@ -18,12 +18,15 @@ int main()
 		cout << "‘ÌÏ‚Í" << boxes[i].volume << endl;
 		cout << "•\–ÊÏ‚Í" << boxes[i].surface << endl;
 		if (isSendable(&boxes[i])) {
-			cout << "‘î‹}•ÖƒTƒCƒY‚Í" << boxes[i].packSize << endl;
+			cout << "‘î‹}•ÖƒTƒCƒY‚Í" << boxes[i].packSize <<"‚Å‘—‚ê‚Ü‚·"<< endl;
 		}
 		else {
 			cout << "‘î‹}•Ö‚Å‚Í‘—‚ê‚Ü‚¹‚ñ" << endl;
 		}
-
+		//testa
 	}
+	int e;
+	cin >> e;
+
 	return 0;
 }

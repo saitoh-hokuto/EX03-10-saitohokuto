@@ -6,18 +6,16 @@ void getVolumeSurface(BOX* box) {
 }
 bool isSendable(BOX* box)
 {
-	bool sendable = false;
 	box->packSize = -1;
-	double length = box->x + box->y + box->z;
-	const int packs = 5;
-	double packSize[packs] = { 60,80,100,120,160 };
+	double baggage = box->x + box->y + box->z;
+	const int criteria_size = 8;
+	double packSize[criteria_size] = { 60,80,100,120,140,160,180,200 };
 
-	for (int i = 0; i < packs; i++) {
-		if (length <= packSize[i]) {
-			sendable = true;
+	for (int i = 0; i < criteria_size; i++) {
+		if (baggage <= packSize[i]) {
 			box->packSize = packSize[i];
-			break;
+			return true;
 		}
 	}
-	return sendable;
+	return true;
 }

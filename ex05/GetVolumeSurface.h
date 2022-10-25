@@ -9,7 +9,5 @@ struct BOX {	//箱の定義
 }; 
 void getVolumeSurface(BOX* box);
 //宅急便判定関数
-bool isSendable( 
-	BOX* box	//BOXのポインタ
-	);
+bool isSendable(BOX* box);
 
