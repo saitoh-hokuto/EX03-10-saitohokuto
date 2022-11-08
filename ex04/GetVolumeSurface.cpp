@@ -1,6 +1,6 @@
 #include"GetVolumeSurface.h"
 
-double getVolumeSurface(double x, double y, double z, double& suraface) {
-	suraface = (x * y + x * z + y * z) * 2.0;
-	return  x * y * z;
+void VolumeSurface(double width, double height, double depth, double& volume, double& surface) {
+	volume = width * height * depth;
+	surface = (width * height + width * depth + height * depth) * 2;
 }
